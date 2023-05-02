@@ -98,11 +98,16 @@ h6 {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   cursor: pointer;
+  color: #fff;
   border: 2px solid #fff;
   background: transparent;
-  color: #fff;
   padding: 28px 50px;
   font-family: "Anton";
+  transition: 0.3s ease-in;
+}
+.booking:hover {
+  background: #fff;
+  color: aqua;
 }
 
 .about_title {
