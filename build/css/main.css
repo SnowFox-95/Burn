@@ -24,7 +24,7 @@ h6 {
   background-color: grey;
   background: url("../img/header-bg.png") no-repeat center top/cover;
   height: 100vh;
-}
+}				.webp .header {					background: url("../img/header-bg.webp") no-repeat center top/cover				}			
 
 .container {
   width: 1170px;
@@ -170,4 +170,4 @@ h6 {
 .copyright a {
   text-decoration: none;
   color: #000;
-}/*# sourceMappingURL=style.css.map */
+}

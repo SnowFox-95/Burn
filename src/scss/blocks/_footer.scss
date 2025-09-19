@@ -1,0 +1,16 @@
+.copyright,
+.copyright p {
+	font-family: 'Open Sans', serif;
+}
+
+.copyright {
+	display       : flex;
+	flex-direction: row;
+	gap           : 20px;
+	padding-bottom: 80px;
+}
+
+.copyright a {
+	text-decoration: none;
+	color          : #000;
+}

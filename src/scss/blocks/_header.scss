@@ -1,0 +1,49 @@
+.header {
+	padding         : 27px 32px 36px 26px;
+	background-color: grey;
+	background      : url("../img/header-bg.png") no-repeat center top / cover;
+	height          : 100vh;
+}
+
+.menu {
+	display    : flex;
+	align-items: center;
+}
+
+.logo {
+	padding-right: 69px;
+}
+
+.menu_items {
+	display        : flex;
+	justify-content: space-between;
+	font-size      : 17px;
+	text-transform : uppercase;
+	line-height    : 21px;
+	letter-spacing : 0.1em;
+}
+
+.menu_item {
+	list-style: none;
+
+	&:not(:last-child) {
+		padding: 0 40px 0 0;
+	}
+}
+
+.menu_link {
+	color          : #fff;
+	text-decoration: none;
+}
+
+.phone {
+	margin-left: 623px;
+
+	>a {
+		color          : #fff;
+		text-decoration: none;
+		display        : flex;
+		flex-direction : row;
+		font-size      : 14px;
+	}
+}

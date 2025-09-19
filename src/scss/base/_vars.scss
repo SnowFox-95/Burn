@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans&display=swap');
+
+:root {
+	--container-width: 1170px;
+	--container-padding: 15px;
+
+	--font-main: 'Anton', serif;
+	--font-accent: 'Open Sans', sans-serif;
+
+	--page-bg: #fff;
+	--text-color: #000;
+	--accent: #fff;
+
+	--laptop-size: 1199px;
+	--tablet-size: 959px;
+	--mobile-size: 599px;
+}
+
+.dark {
+	--page-bg: #252526;
+	--text-color: #fff;
+}
+
+// SCSS-переменные для использования в миксинах, медиа-запросах и т.д.
+$container-width: 1170px;
+$container-padding: 15px;
+
+$font-main: 'Anton', serif;
+$font-accent: 'Open Sans', sans-serif;
+
+$page-bg: #fff;
+$text-color: #000;
+$accent: #fff;
+
+$laptop-size: 1199px;
+$tablet-size: 959px;
+$mobile-size: 599px;
