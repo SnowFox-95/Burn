@@ -2,10 +2,11 @@
 @use './vars' as vars;
 
 .container {
-	margin: 0 auto;
-	padding: 0 var(--container-padding);
-	max-width: var(--container-width);
-	width: 100%;
+	width      : 1170px;
+	margin     : 0 auto;
+	display    : flex;
+	align-items: center;
+	text-align : center;
 }
 
 .container-full {

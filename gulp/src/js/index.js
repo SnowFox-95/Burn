@@ -1,2 +1,2 @@
-import mobileNav from './modules/mobile-nav.js';
-mobileNav();
+// Основной JavaScript файл для сайта Burn
+console.log('Burn website loaded successfully!');

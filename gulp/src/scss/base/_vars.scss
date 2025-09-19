@@ -1,15 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans&display=swap');
 
 :root {
-	--container-width: 1200px;
+	--container-width: 1170px;
 	--container-padding: 15px;
 
-	--font-main: 'Poppins', sans-serif;
-	--font-accent: 'Playfair Display', serif;
+	--font-main: 'Anton', serif;
+	--font-accent: 'Open Sans', sans-serif;
 
 	--page-bg: #fff;
 	--text-color: #000;
-	--accent: #ac182c;
+	--accent: #fff;
 
 	--laptop-size: 1199px;
 	--tablet-size: 959px;
@@ -22,15 +22,15 @@
 }
 
 // SCSS-переменные для использования в миксинах, медиа-запросах и т.д.
-$container-width: 1200px;
+$container-width: 1170px;
 $container-padding: 15px;
 
-$font-main: 'Poppins', sans-serif;
-$font-accent: 'Playfair Display', serif;
+$font-main: 'Anton', serif;
+$font-accent: 'Open Sans', sans-serif;
 
 $page-bg: #fff;
 $text-color: #000;
-$accent: #ac182c;
+$accent: #fff;
 
 $laptop-size: 1199px;
 $tablet-size: 959px;
