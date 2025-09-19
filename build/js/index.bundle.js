@@ -1,1 +1,0 @@
-console.log("Burn website loaded successfully!");
