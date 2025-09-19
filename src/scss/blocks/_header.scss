@@ -1,49 +1,89 @@
+@use '../base/vars' as *;
+
 .header {
-	padding         : 27px 32px 36px 26px;
-	background-color: grey;
-	background      : url("../img/header-bg.png") no-repeat center top / cover;
-	height          : 100vh;
+    padding         : 27px 32px 36px 26px;
+    background-color: grey;
+    background      : url("../img/header-bg.png") no-repeat center top / cover;
+    height          : 100vh;
 }
 
 .menu {
-	display    : flex;
-	align-items: center;
+    display    : flex;
+    align-items: center;
 }
 
 .logo {
-	padding-right: 69px;
+    padding-right: 69px;
 }
 
 .menu_items {
-	display        : flex;
-	justify-content: space-between;
-	font-size      : 17px;
-	text-transform : uppercase;
-	line-height    : 21px;
-	letter-spacing : 0.1em;
+    display        : flex;
+    justify-content: space-between;
+    font-size      : 17px;
+    text-transform : uppercase;
+    line-height    : 21px;
+    letter-spacing : 0.1em;
 }
 
 .menu_item {
-	list-style: none;
+    list-style: none;
 
-	&:not(:last-child) {
-		padding: 0 40px 0 0;
-	}
+    &:not(:last-child) {
+        padding: 0 40px 0 0;
+    }
 }
 
 .menu_link {
-	color          : #fff;
-	text-decoration: none;
+    color          : $primary-color;
+    text-decoration: none;
 }
 
 .phone {
-	margin-left: 623px;
+    margin-left: 623px;
 
-	>a {
-		color          : #fff;
-		text-decoration: none;
-		display        : flex;
-		flex-direction : row;
-		font-size      : 14px;
-	}
+    > a {
+        color          : $primary-color;
+        text-decoration: none;
+        display        : flex;
+        flex-direction : row;
+        font-size      : 14px;
+    }
+}
+
+.titles {
+    margin-top   : 263px;
+    margin-bottom: 20px;
+
+    > .pre-title {
+        font-size     : 35px;
+        line-height   : 45px;
+        letter-spacing: 0.1em;
+        margin-left   : -355px;
+    }
+
+    > .title {
+        font-size     : 120px;
+        line-height   : 170px;
+        letter-spacing: 0.1em;
+    }
+}
+
+.booking {
+    font-size     : 30px;
+    line-height   : 26px;
+    text-align    : center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor        : pointer;
+    color         : $primary-color;
+    border        : 2px solid $primary-color;
+    background    : transparent;
+    padding       : 28px 50px;
+    font-family   : $primary-font;
+    transition    : 0.3s ease-in;
+
+    &:hover {
+        background: $primary-color;
+        color     : $accent-color;
+    }
 }

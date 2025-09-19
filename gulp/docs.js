@@ -9,16 +9,13 @@ const typograf = require("gulp-typograf");
 
 // SASS
 const sass = require("gulp-sass")(require("sass"));
-const sassGlob = require("gulp-sass-glob");
 const autoprefixer = require("gulp-autoprefixer");
 const csso = require("gulp-csso");
-const webImagesCSS = require("gulp-web-images-css"); //Вывод WEBP-изображений
 
-const server = require("gulp-server-livereload");
+const browserSync = require("browser-sync").create();
 const clean = require("gulp-clean");
 const fs = require("fs");
 const sourceMaps = require("gulp-sourcemaps");
-const groupMedia = require("gulp-group-css-media-queries");
 const plumber = require("gulp-plumber");
 const notify = require("gulp-notify");
 const webpack = require("webpack-stream");
@@ -26,7 +23,7 @@ const babel = require("gulp-babel");
 const changed = require("gulp-changed");
 
 // Images
-const imagemin = require("gulp-imagemin");
+// const imagemin = require("gulp-imagemin"); // ES Module, импортируем динамически
 const imageminWebp = require("imagemin-webp");
 const extReplace = require("gulp-ext-replace");
 const merge = require("merge-stream");
@@ -100,14 +97,7 @@ gulp.task("sass:docs", function () {
     .pipe(plumber(plumberNotify("SCSS")))
     .pipe(sourceMaps.init())
     .pipe(autoprefixer())
-    .pipe(sassGlob())
-    .pipe(groupMedia())
     .pipe(sass())
-    .pipe(
-      webImagesCSS({
-        mode: "webp",
-      })
-    )
     .pipe(
       replace(
         /(['"]?)(\.\.\/)+(img|images|fonts|css|scss|sass|js|files|audio|video)(\/[^\/'"]+(\/))?([^'"]*)\1/gi,
@@ -121,15 +111,20 @@ gulp.task("sass:docs", function () {
     .pipe(gulp.dest("./docs/css/"));
 });
 
-gulp.task('images:docs:copy', function () {
-  return gulp
-    .src(['./src/img/**/*', '!./src/img/svgicons/**/*'])
-    .pipe(changed('./docs/img/'))
-    .pipe(gulp.dest('./docs/img/'));
+gulp.task('images:docs:copy', function (done) {
+  const { exec } = require('child_process');
+  exec('xcopy src\\img\\*.png docs\\img\\ /Y && xcopy src\\img\\*.jpg docs\\img\\ /Y && xcopy src\\img\\*.svg docs\\img\\ /Y', (error, stdout, stderr) => {
+    if (error) {
+      console.error(`exec error: ${error}`);
+      return;
+    }
+    done();
+  });
 });
 
 
-gulp.task('images:docs:webp', function () {
+gulp.task('images:docs:webp', async function () {
+  const imagemin = (await import("gulp-imagemin")).default;
   return gulp
     .src(['./src/img/**/*.{jpg,jpeg,png,gif}'])
     .pipe(changed('./docs/img/', { extension: '.webp' }))
@@ -190,6 +185,10 @@ gulp.task("svgSymbol:docs", function () {
 });
 
 gulp.task("fonts:docs", function () {
+  const fs = require("fs");
+  if (!fs.existsSync("./src/fonts/")) {
+    return Promise.resolve();
+  }
   return gulp
     .src("./src/fonts/**/*")
     .pipe(changed("./docs/fonts/"))
@@ -197,6 +196,10 @@ gulp.task("fonts:docs", function () {
 });
 
 gulp.task("files:docs", function () {
+  const fs = require("fs");
+  if (!fs.existsSync("./src/files/")) {
+    return Promise.resolve();
+  }
   return gulp
     .src("./src/files/**/*")
     .pipe(changed("./docs/files/"))
@@ -213,11 +216,10 @@ gulp.task("js:docs", function () {
     .pipe(gulp.dest("./docs/js/"));
 });
 /* 
-const serverOptions = {
-  livereload: true,
-  open: true,
-};
-
 gulp.task("server:docs", function () {
-  return gulp.src("./docs/").pipe(server(serverOptions));
+  browserSync.init({
+    server: "./docs/",
+    open: true,
+    notify: false
+  });
 }); */

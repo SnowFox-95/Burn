@@ -1,44 +1,46 @@
+@use '../base/vars' as *;
+
 .about_title {
-	margin     : 113px 0 56px 0;
-	color      : #000;
-	font-size  : 50px;
-	line-height: 75px;
+    margin     : 113px 0 56px 0;
+    color      : $secondary-color;
+    font-size  : 50px;
+    line-height: 75px;
 }
 
 .article-title {
-	color: #000;
+    color: $secondary-color;
 }
 
-.container>.articles {
-	display: flex;
-	flex   : auto;
-	gap    : 36px;
+.container > .articles {
+    display: flex;
+    flex   : auto;
+    gap    : 36px;
 }
 
-.container>.articles>.article>.article-title {
-	color        : #000;
-	margin-bottom: 19px;
-	text-align   : left;
+.container > .articles > .article > .article-title {
+    color        : $secondary-color;
+    margin-bottom: 19px;
+    text-align   : left;
 }
 
-.container>.articles>.article>p {
-	font-family: 'Open-Sans', sans-serif;
-	align-items: center;
-	text-align : justify;
-	font-size  : 16px;
-	line-height: 26px;
+.container > .articles > .article > p {
+    font-family: $secondary-font;
+    align-items: center;
+    text-align : justify;
+    font-size  : 16px;
+    line-height: 26px;
 }
 
 .articles-images {
-	display       : flex;
-	flex-direction: row;
-	gap           : 30px;
-	padding-top   : 116px;
+    display       : flex;
+    flex-direction: row;
+    gap           : 30px;
+    padding-top   : 116px;
 }
 
 .article-images {
-	display       : flex;
-	flex-direction: row;
-	padding-top   : 90px;
-	padding-bottom: 114px;
+    display       : flex;
+    flex-direction: row;
+    padding-top   : 90px;
+    padding-bottom: 114px;
 }

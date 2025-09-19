@@ -1,16 +1,18 @@
+@use '../base/vars' as *;
+
 .copyright,
 .copyright p {
-	font-family: 'Open Sans', serif;
+    font-family: $secondary-font;
 }
 
 .copyright {
-	display       : flex;
-	flex-direction: row;
-	gap           : 20px;
-	padding-bottom: 80px;
+    display       : flex;
+    flex-direction: row;
+    gap           : 20px;
+    padding-bottom: 80px;
 }
 
 .copyright a {
-	text-decoration: none;
-	color          : #000;
+    text-decoration: none;
+    color          : $secondary-color;
 }

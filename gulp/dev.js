@@ -1,8 +1,7 @@
 const gulp = require("gulp");
 const fileInclude = require("gulp-file-include");
 const sass = require("gulp-sass")(require("sass"));
-const sassGlob = require("gulp-sass-glob");
-const server = require("gulp-server-livereload");
+const browserSync = require("browser-sync").create();
 const clean = require("gulp-clean");
 const fs = require("fs");
 const sourceMaps = require("gulp-sourcemaps");
@@ -10,12 +9,11 @@ const plumber = require("gulp-plumber");
 const notify = require("gulp-notify");
 const webpack = require("webpack-stream");
 const babel = require("gulp-babel");
-const imagemin = require("gulp-imagemin");
+// const imagemin = require("gulp-imagemin"); // ES Module, импортируем динамически
 const changed = require("gulp-changed");
 //const typograf = require('gulp-typograf');
 const svgsprite = require("gulp-svg-sprite");
 const replace = require("gulp-replace");
-const webImagesCSS = require("gulp-web-images-css");
 const csso = require("gulp-csso");
 const rename = require("gulp-rename");
 const imageminWebp = require("imagemin-webp");
@@ -66,6 +64,7 @@ gulp.task("html:dev", function () {
       })
     )*/
       .pipe(gulp.dest("./build"))
+      .pipe(browserSync.stream())
   );
 });
 
@@ -75,35 +74,40 @@ gulp.task("sass:dev", function () {
     .pipe(changed("./build/css/"))
     .pipe(plumber(plumberNotify("SCSS")))
     .pipe(sourceMaps.init())
-    .pipe(sassGlob())
     .pipe(sass())
-    .pipe(
-      webImagesCSS({
-        mode: "webp",
-        base: "../img/",
-      })
-    )
-    .pipe(
-      replace(
-        /(['"]?)(\.\.\/)+(img|images|fonts|css|scss|sass|js|files|audio|video)(\/[^\/'"]+(\/))?([^'"]*)\1/gi,
-        "$1$2$3$4$6$1"
-      )
-    )
+    // .pipe(
+    //   webImagesCSS({
+    //     mode: "webp",
+    //     base: "../img/",
+    //   })
+    // )
+    // .pipe(
+    //   replace(
+    //     /(['"]?)(\.\.\/)+(img|images|fonts|css|scss|sass|js|files|audio|video)(\/[^\/'"]+(\/))?([^'"]*)\1/gi,
+    //     "$1$2$3$4$6$1"
+    //   )
+    // )
     .pipe(gulp.dest("./build/css/"))
     .pipe(csso())
     .pipe(rename({ suffix: ".min" }))
     .pipe(sourceMaps.write("."))
-    .pipe(gulp.dest("./build/css/"));
+    .pipe(gulp.dest("./build/css/"))
+    .pipe(browserSync.stream());
 });
 
-gulp.task("images:copy", function () {
-  return gulp
-    .src(["./src/img/**/*", "!./src/img/svgicons/**/*"])
-    .pipe(changed("./build/img/"))
-    .pipe(gulp.dest("./build/img/"));
+gulp.task("images:copy", function (done) {
+  const { exec } = require('child_process');
+  exec('xcopy src\\img\\*.png build\\img\\ /Y && xcopy src\\img\\*.jpg build\\img\\ /Y && xcopy src\\img\\*.svg build\\img\\ /Y', (error, stdout, stderr) => {
+    if (error) {
+      console.error(`exec error: ${error}`);
+      return;
+    }
+    done();
+  });
 });
 
-gulp.task("images:webp", function () {
+gulp.task("images:webp", async function () {
+  const imagemin = (await import("gulp-imagemin")).default;
   return gulp
     .src(["./src/img/**/*.{jpg,jpeg,png,gif}"])
     .pipe(changed("./build/img/", { extension: ".webp" }))
@@ -173,6 +177,9 @@ gulp.task("svgSymbol:dev", function () {
 });
 
 gulp.task("fonts:dev", function () {
+  if (!fs.existsSync("./src/fonts/")) {
+    return Promise.resolve();
+  }
   return gulp
     .src("./src/fonts/**/*")
     .pipe(changed("./build/fonts/"))
@@ -180,6 +187,9 @@ gulp.task("fonts:dev", function () {
 });
 
 gulp.task("files:dev", function () {
+  if (!fs.existsSync("./src/files/")) {
+    return Promise.resolve();
+  }
   return gulp
     .src("./src/files/**/*")
     .pipe(changed("./build/files/"))
@@ -195,16 +205,16 @@ gulp.task("js:dev", function () {
       // .pipe(babel())
       .pipe(webpack(require("../webpack.config.js")))
       .pipe(gulp.dest("./build/js/"))
+      .pipe(browserSync.stream())
   );
 });
 
-const serverOptions = {
-  livereload: true,
-  open: true,
-};
-
 gulp.task("server:dev", function () {
-  return gulp.src("./build/").pipe(server(serverOptions));
+  browserSync.init({
+    server: "./build/",
+    open: true,
+    notify: false
+  });
 });
 
 gulp.task("watch:dev", function () {
