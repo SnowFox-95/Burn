@@ -95,15 +95,9 @@ gulp.task("sass:dev", function () {
     .pipe(browserSync.stream());
 });
 
-gulp.task("images:copy", function (done) {
-  const { exec } = require('child_process');
-  exec('xcopy src\\img\\*.png build\\img\\ /Y && xcopy src\\img\\*.jpg build\\img\\ /Y && xcopy src\\img\\*.svg build\\img\\ /Y', (error, stdout, stderr) => {
-    if (error) {
-      console.error(`exec error: ${error}`);
-      return;
-    }
-    done();
-  });
+gulp.task('images:copy', function () {
+  return gulp.src('src/img/*.{png,jpg,svg}')
+    .pipe(gulp.dest('build/img'));
 });
 
 gulp.task("images:webp", async function () {
