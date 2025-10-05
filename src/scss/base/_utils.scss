@@ -1,20 +1,12 @@
-.none {
-	display: none !important;
+// Utility classes
+.text-center {
+    text-align: center;
 }
 
-.visually-hidden {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	margin: -1px;
-	border: 0;
-	padding: 0;
-	white-space: nowrap;
-	clip-path: inset(100%);
-	clip: rect(0 0 0 0);
-	overflow: hidden;
+.text-left {
+    text-align: left;
 }
 
-.no-scroll {
-	overflow-y: hidden;
+.text-justify {
+    text-align: justify;
 }

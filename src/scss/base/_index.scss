@@ -1,7 +1,6 @@
-@forward '_vars';
-@forward '_mixins';
-@forward '_utils';
-@forward '_reset';
-@forward '_sticky-footer';
-@forward '_base';
-@forward '_containers';
+@use 'vars' as *;
+@use 'reset';
+@use 'base';
+@use 'containers';
+@use 'utils';
+@use 'mixins';

@@ -1,9 +1,90 @@
+@use '../base/vars' as *;
+@use '../base/mixins' as *;
+
 .header {
-	background-color: rgb(195, 220, 231);
-	padding: 50px 0;
-	&__row {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-	}
+    padding: 27px 32px 36px 26px;
+    background-color: $grey;
+    background: url("../img/header-bg.png") no-repeat center top / cover;
+    height: 100vh;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    padding-right: 69px;
+}
+
+.menu_items {
+    display: flex;
+    justify-content: space-between;
+    font-size: 17px;
+    text-transform: uppercase;
+    line-height: 21px;
+    letter-spacing: 0.1em;
+}
+
+.menu_item {
+    list-style: none;
+
+    &:not(:last-child) {
+        padding: 0 40px 0 0;
+    }
+}
+
+.menu_link {
+    color: $white;
+    text-decoration: none;
+}
+
+.phone {
+    margin-left: 623px;
+
+    >a {
+        color: $white;
+        text-decoration: none;
+        display: flex;
+        flex-direction: row;
+        font-size: 14px;
+    }
+}
+
+.titles {
+    margin-top: 263px;
+    margin-bottom: 20px;
+
+    >.pre-title {
+        font-size: 35px;
+        line-height: 45px;
+        letter-spacing: 0.1em;
+        margin-left: -355px;
+    }
+
+    >.title {
+        font-size: 120px;
+        line-height: 170px;
+        letter-spacing: 0.1em;
+    }
+}
+
+.booking {
+    font-size: 30px;
+    line-height: 26px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: $white;
+    border: 2px solid $white;
+    background: transparent;
+    padding: 28px 50px;
+    font-family: 'Anton';
+    @include transition();
+
+    &:hover {
+        background: $white;
+        color: $aqua;
+    }
 }

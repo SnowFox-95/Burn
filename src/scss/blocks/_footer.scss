@@ -1,16 +1,18 @@
-@use '../base/vars' as vars;
+@use '../base/vars' as *;
 
-.footer {
-    background-color: rgb(62, 62, 62);
-    padding: 50px 0;
-    font-size: 32px;
-    color: #fff;
+.copyright,
+.copyright p {
+    font-family: 'Open Sans', serif;
+}
 
-    h1 {
-        font-size: 32px;
-    }
+.copyright {
+    display       : flex;
+    flex-direction: row;
+    gap           : 20px;
+    padding-bottom: 80px;
+}
 
-    @media (max-width: vars.$laptop-size) {
-        font-size: 26px;
-    }
+.copyright a {
+    text-decoration: none;
+    color          : $black;
 }
