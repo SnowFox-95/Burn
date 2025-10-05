@@ -1,11 +1,21 @@
 # Burn
 
-Сайт посвященный ежегодному мероприятию Burning Man
+## Сайт посвященный ежегодному мероприятию Burning Man
 
+---
+<a style="text-decoration:none;" href="https://github.com/SnowFox-95/Gulp-template_webcademy" >
+<img src="https://img.shields.io/badge/ВНИМАНИЕ САЙТ ПЕРЕРАБОТАН ПОД СБОРКУ GULP-003366?style=for-the-badge">
+</a>
 
 ![image](https://user-images.githubusercontent.com/17219495/235618888-405372ea-24f6-4872-9b0d-ffdd86e5ffb2.png)
 
-
 ## Технологии
 
-<img src="https://img.shields.io/badge/HTML5-003366?style=for-the-badge&logo=HTML5&logoColor=FFFFFF"> <img src="https://img.shields.io/badge/SCSS-003366?style=for-the-badge&logo=sass&logoColor=FFFFFF"> <img src="https://img.shields.io/badge/CSS3-003366?style=for-the-badge&logo=css3&logoColor=FFFFFF"> 
+<img src="https://img.shields.io/badge/GULP-003366?style=for-the-badge&logo=gulp&logoColor=FFFFFF">
+---
+<img src="https://img.shields.io/badge/HTML5-003366?style=for-the-badge&logo=HTML5&logoColor=FFFFFF">
+<img src="https://img.shields.io/badge/SCSS-003366?style=for-the-badge&logo=sass&logoColor=FFFFFF"> 
+<img src="https://img.shields.io/badge/CSS3-003366?style=for-the-badge&logo=css3&logoColor=FFFFFF">
+
+
+
