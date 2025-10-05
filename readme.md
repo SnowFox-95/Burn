@@ -4,7 +4,7 @@
 
 ---
 <a style="text-decoration:none;" href="https://github.com/SnowFox-95/Gulp-template_webcademy" >
-<img src="https://img.shields.io/badge/ВНИМАНИЕ САЙТ ПЕРЕРАБОТАН ПОД СБОРКУ GULP-003366?style=for-the-badge">
+<img src="https://img.shields.io/badge/ВНИМАНИЕ!!! САЙТ ПЕРЕРАБОТАН ПОД СБОРКУ GULP-003366?style=for-the-badge">
 </a>
 
 ---
